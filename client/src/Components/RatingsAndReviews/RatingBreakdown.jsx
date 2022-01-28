@@ -9,14 +9,23 @@ class RatingBreakdown extends React.Component {
   }
 
   calculateAvg(ratings) {
-    // reviews.forEach((review) => {
-    //   avg += review.rating;
-    // })
-    let num = parseInt(ratings['1']) + parseInt(ratings['2']) + parseInt(ratings['3']) + parseInt(ratings['4']) + parseInt(ratings['5']);
-    let avg = parseInt(ratings['1']) + (parseInt(ratings['2']) * 2) + (parseInt(ratings['3']) * 3) + (parseInt(ratings['4']) * 4) + (parseInt(ratings['5']) * 5);
-    avg /= num;
-    avg = avg.toFixed(1);
-    return avg;
+    var sum = 0;
+    var divisor = 0;
+    for(var key in ratings) {
+      var rating = key;
+      var numOfRatings = parseInt(ratings[rating]);
+      divisor += numOfRatings;
+      sum += rating * numOfRatings;
+    }
+    return sum/divisor;
+    // // reviews.forEach((review) => {
+    // //   avg += review.rating;
+    // // })
+    // let num = parseInt(ratings['1']) + parseInt(ratings['2']) + parseInt(ratings['3']) + parseInt(ratings['4']) + parseInt(ratings['5']);
+    // let avg = parseInt(ratings['1']) + (parseInt(ratings['2']) * 2) + (parseInt(ratings['3']) * 3) + (parseInt(ratings['4']) * 4) + (parseInt(ratings['5']) * 5);
+    // avg /= num;
+    // avg = avg.toFixed(1);
+    // return avg;
   }
 
   calculateRecommended(meta) {

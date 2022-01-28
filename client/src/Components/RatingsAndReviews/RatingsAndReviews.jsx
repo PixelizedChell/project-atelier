@@ -38,6 +38,7 @@ class RR extends React.Component {
         })
       } else {
         this.setState({
+          reviews: results.data.results,
           showMore: false
         })
       }
